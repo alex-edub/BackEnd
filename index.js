@@ -9,13 +9,12 @@ const port = 3000;
 app.use(cors());
 app.use(express.json());
 
-app.post("/", async (request, response) => {
-    const {name, email } = request.body; 
-    const users = await User.query(
-        "INSERT INTO users('name','birthdate')VALUES(?,?)"
-    );
+app.post ("/", async (request, response) => {
+    const {name, birthdate } = request.body; 
+    const users = await User.create({name, birthdate });
     return response.status(200).json('Dados salvos com sucesso');
-  });
+    });
+  
 
 app.get("/", async (request, response) => {
     const user = request.body;
