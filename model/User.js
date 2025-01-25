@@ -6,8 +6,9 @@ const User = databaseConnection.define(
     {
       // Model attributes are defined here
       id: {
-        type: DataTypes.INTEGER,
+        type:DataTypes.INTEGER,
         primaryKey: true,
+        autoIncrement: true,
       },
       name: {
         type: DataTypes.STRING,
