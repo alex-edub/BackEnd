@@ -2,6 +2,7 @@ import express from "express";
 import cors from "cors";
 import databaseConnection from "./database/database-connection.js";
 import User from "./model/User.js";
+import syncTableDataBase from "./database/sync-table--database.js";
 
 const app = express();
 const port = 3000;
@@ -23,7 +24,7 @@ app.get("/", async (request, response) => {
 });
 
 const initApp = async () => {
-  await databaseConnection.sync({ force: false });
+  await syncTableDataBase();
 
   app.listen(port, (error) => {
     if (error) {
